@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instance = axios.creaete({
+const instance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   params: {
     api_key: "f4f722a4b15f50c75289c574a4d60159",
