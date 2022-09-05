@@ -1,9 +1,12 @@
 import axios from "../API/axios";
 import React, { useEffect, useState } from "react";
+import MovieModal from "./MovieModal/MovieModal";
 import "./Row.css";
 
 function Row({ title, id, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [MovieSelected, setMovieSelected] = useState({});
 
   useEffect(() => {
     fetchMovieData();
@@ -14,6 +17,11 @@ function Row({ title, id, fetchUrl, isLargeRow }) {
     setMovies(request.data.results);
     console.log("request", request);
     return request;
+  };
+
+  const handleClick = (movie) => {
+    setModalOpen(true);
+    setMovieSelected(movie);
   };
 
   return (
@@ -40,6 +48,7 @@ function Row({ title, id, fetchUrl, isLargeRow }) {
               }`}
               loading="lazy"
               alt={movie.name}
+              onClick={() => handleClick(movie)}
             />
           ))}
         </div>
@@ -52,6 +61,10 @@ function Row({ title, id, fetchUrl, isLargeRow }) {
           <span className="arrow">{">"}</span>
         </div>
       </div>
+
+      {modalOpen && (
+        <MovieModal {...MovieSelected} setModalOpen={setModalOpen} />
+      )}
     </section>
   );
 }
