@@ -2,6 +2,7 @@ import React from "react";
 import "./MovieModal.css";
 
 function MovieModal({
+  poster_path,
   backdrop_path,
   title,
   overview,
@@ -11,8 +12,6 @@ function MovieModal({
   vote_average,
   setModalOpen,
 }) {
-  const base_url = "";
-
   return (
     <div className="presentation" role="presentation">
       <div className="wrapper-modal">
@@ -22,7 +21,9 @@ function MovieModal({
           </span>
           <img
             className="modal__poster-img"
-            src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original/${
+              backdrop_path === null ? poster_path : backdrop_path
+            }`}
             alt="modal__poster-img"
           />
           <div className="modal__content">

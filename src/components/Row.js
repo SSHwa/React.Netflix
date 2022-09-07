@@ -44,7 +44,9 @@ function Row({ title, id, fetchUrl, isLargeRow }) {
               key={movie.id}
               className={`row__poster ${isLargeRow && "row__posterLarge"}`}
               src={`${"https://image.tmdb.org/t/p/original/"}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
+                isLargeRow || movie.backdrop_path === null
+                  ? movie.poster_path
+                  : movie.backdrop_path
               }`}
               loading="lazy"
               alt={movie.name}
