@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Nav.css";
 
 function Nav() {
   const [show, handleShow] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
@@ -21,6 +24,15 @@ function Nav() {
       []
     );
   });
+  const handleChange = (e) => {
+    var txt = e.target.value;
+    setSearchValue(txt);
+    if (txt === "") {
+      navigate(`/`);
+    } else {
+      navigate(`/search?q=${txt}`);
+    }
+  };
 
   return (
     <nav className={`nav ${show && "nav__black"}`}>
@@ -29,6 +41,13 @@ function Nav() {
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/300px-Netflix_2015_logo.svg.png"
         className="nav__logo"
         onClick={() => window.location.reload()}
+      />
+      <input
+        value={searchValue}
+        onChange={handleChange}
+        className="nav__input"
+        type="text"
+        placeholder="영화를 검색하세요"
       />
       <img
         alt="User logo"
