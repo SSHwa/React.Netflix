@@ -23,8 +23,6 @@ function Banner() {
       params: { append_to_response: "videos" },
     });
     setMovie(movieDetail);
-    console.log(movieId);
-    console.log(movieDetail);
   };
 
   const truncate = (str, n) => {
