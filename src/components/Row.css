@@ -3,8 +3,10 @@
   color: white;
 }
 h2 {
-  color: black;
+  color: white;
   padding-left: 20px;
+  font-weight: normal;
+  margin-top: 8pt;
 }
 .slider {
   position: relative;
