@@ -85,7 +85,7 @@ function Row({ title, id, fetchUrl, isLargeRow }) {
                       ? movie.poster_path
                       : movie.backdrop_path
                   }`}
-                  loading="lazy"
+                  // loading="lazy"
                   alt={movie.name}
                   onClick={() => handleClick(movie)}
                 />
