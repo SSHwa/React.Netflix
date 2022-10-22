@@ -1,0 +1,26 @@
+create-react-app
+react-router-dom
+axios
+styled-components
+
+npx create-next-app@latest 
+npx create-next-app@latest --typescript
+
+
+
+
+<테스트 모듈 플러그인>
+eslint-plugin-testing-library  (돔 그리는 부분)
+eslint-plugin-jest-dom        (테스트 보조)
+
+.eslintrc.json 생성하여 
+{
+  "plugins": ["testing-library", "jest-dom"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ]
+}
+
